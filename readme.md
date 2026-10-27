@@ -29,6 +29,6 @@ west build -b ek_ra6m5 -d build/v1 --sysbuild . -p always
 #### Flash command - Run from project directory
 
 ```
-west flash
+west flash -d build/v1
 ```
 
