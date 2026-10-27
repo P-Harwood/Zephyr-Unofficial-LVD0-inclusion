@@ -13,10 +13,12 @@ manifest:
         name-allowlist:
           - cmsis_6
           - hal_renesas
+
     - name: mcuboot
       remote: P-Harwood
       repo-path: mcuboot
       revision: ra6m5-erase-size-v2
       path: bootloader/mcuboot
+      
   self:
     path: applications/lvd_db
