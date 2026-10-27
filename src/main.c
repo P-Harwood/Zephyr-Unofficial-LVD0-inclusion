@@ -2,6 +2,7 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
 #include <zephyr/sys/sys_io.h>
+#include <zephyr/dfu/mcuboot.h>
 
 
 #define OFS0_ADDR     0x0100A100U
@@ -38,6 +39,18 @@ static void print_ofs1(const char *name, uint32_t addr)
 
 int main(void)
 {
+
+	if (!boot_is_img_confirmed() && boot_is_img_confirmed()) {
+
+	int img_cnf = boot_write_img_confirmed();
+	if (img_cnf) {
+		printk("confirm failed (%d) - will revert on reboot\n", img_cnf);
+	} else {
+		printk("image confirmed - now permanent\n");
+	}
+    }
+
+
 	printk("--- RA6M5 option-setting memory ---\n");
 
 	print_word("OFS0", OFS0_ADDR);
@@ -46,6 +59,11 @@ int main(void)
 	print_ofs1("OFS1", OFS1_ADDR);
 	print_ofs1("OFS1_SEC", OFS1_SEC_ADDR);
 	print_ofs1("OFS1_SEL", OFS1_SEL_ADDR); 
+
+	while(true){
+        printk("Running loop on an new image!\n");
+        k_msleep(500);
+    }
 
 	return 0;
 }
