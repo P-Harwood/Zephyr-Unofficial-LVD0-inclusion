@@ -40,14 +40,13 @@ static void print_ofs1(const char *name, uint32_t addr)
 int main(void)
 {
 
-	if (!boot_is_img_confirmed() && boot_is_img_confirmed()) {
-
-	int img_cnf = boot_write_img_confirmed();
-	if (img_cnf) {
-		printk("confirm failed (%d) - will revert on reboot\n", img_cnf);
-	} else {
-		printk("image confirmed - now permanent\n");
-	}
+	if (!boot_is_img_confirmed() ) {
+		int img_cnf = boot_write_img_confirmed();
+		if (img_cnf) {
+			printk("confirm failed (%d) - will revert on reboot\n", img_cnf);
+		} else {
+			printk("image confirmed - now permanent\n");
+		}
     }
 
 
