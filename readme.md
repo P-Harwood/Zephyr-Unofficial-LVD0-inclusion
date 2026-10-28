@@ -4,7 +4,8 @@
 
 - UART connector to P411 (Board's Tx) and P410 (Board's Rx) for interacting with the board
 
-## Install Steps (Start in desired install directory):
+## Install Steps
+Start inside the desired directory for installation. For example, documents/Lvd_example/
 ```    
 py -3.12 -m venv .venv
 cd .venv\Scripts
@@ -86,3 +87,5 @@ exit
 7. Wait for the countdown to finish, the application will then confirm v1.3.0
 8. Flash v1.2.0 bank1 version to the device
 9. Observe the application ignore v1.2.0 as it is an operating system downgrade
+
+At Boot the application prints the results of the OFS registers. 
