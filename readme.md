@@ -47,6 +47,7 @@ JLink.exe -device R7FA6M5BH -if SWD -speed 4000 -autoconnect 1
 ```
 
 2. Loadfile the bank1 hex
+
 For image V1.2.0:
 ```
 loadfile build\v2\lvd_db\zephyr\app_bank1.hex
@@ -63,7 +64,7 @@ g
 exit
 ```
 
-#### Manually and set LVD0 to default values
+#### Manually set LVD0 to default values
 1. Open JLink 
 ```
 JLink.exe -device R7FA6M5BH -if SWD -speed 4000 -autoconnect 1
