@@ -27,8 +27,6 @@ west zephyr-export
 west build -b ek_ra6m5 -d build/v1 --sysbuild . -p always -- -DCONFIG_MCUBOOT_IMGTOOL_SIGN_VERSION=\"1.0.0\" 
 ```
 ##### Test batch build command
-
-Default build command:
 ```
 west build -b ek_ra6m5 -d build\v1 --sysbuild . -p always -- -DCONFIG_MCUBOOT_IMGTOOL_SIGN_VERSION=\"1.1.0\" 
 west build -b ek_ra6m5 -d build\v2 --sysbuild . -p always -- -DCONFIG_MCUBOOT_IMGTOOL_SIGN_VERSION=\"1.2.0\" 
