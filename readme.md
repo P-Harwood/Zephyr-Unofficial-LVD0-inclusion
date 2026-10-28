@@ -18,7 +18,7 @@ west packages pip --install
 west sdk install -t arm-zephyr-eabi
 west zephyr-export
 ```
-## === === Commands === ===
+## Commands
 
 #### Build command - Run from project directory
 
@@ -76,7 +76,7 @@ g
 exit
 ```
 
-### Reccomended example order:
+### Example:
 1. On an erased board, with default OFS, flash the v1.1.0 project
 2. Wait for the application to confirm the image
 3. Flash v1.2.0 bank1 version to the device
