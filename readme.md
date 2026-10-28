@@ -1,4 +1,5 @@
 # LVD0 for RA6M5 on Zephyr with bankswap
+This example demonstrates a RA6M5 running bank swap with scratch on Zephyr OS. Additionally, the application is running with LVD0 enabled.
 
 ## Wiring
 
