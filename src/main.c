@@ -19,6 +19,8 @@
 #define OFS1_HOCOFRQ1_SHIFT 9
 #define OFS1_HOCOFRQ1_MASK  0x3
 
+static int iterations_until_confirm_check = 5;
+
 static void print_word(const char *name, uint32_t addr)
 {
 	printk("%-9s @0x%08x = 0x%08x\n", name, addr, sys_read32(addr));
@@ -40,14 +42,6 @@ static void print_ofs1(const char *name, uint32_t addr)
 int main(void)
 {
 
-	if (!boot_is_img_confirmed() ) {
-		int img_cnf = boot_write_img_confirmed();
-		if (img_cnf) {
-			printk("confirm failed (%d) - will revert on reboot\n", img_cnf);
-		} else {
-			printk("image confirmed - now permanent\n");
-		}
-    }
 
 
 	printk("--- RA6M5 option-setting memory ---\n");
@@ -60,8 +54,38 @@ int main(void)
 	print_ofs1("OFS1_SEL", OFS1_SEL_ADDR); 
 
 	while(true){
-        printk("Running loop on an new image!\n");
-        k_msleep(500);
+
+
+
+		if (iterations_until_confirm_check > 0){
+			printk("Iterations until image confirmation: %d\n", iterations_until_confirm_check--);
+		}
+
+		else if(iterations_until_confirm_check ==0){
+
+			if (!boot_is_img_confirmed() ) {
+
+				int img_cnf = boot_write_img_confirmed();
+
+				if (img_cnf) {
+					printk("confirm failed (%d) - will revert on reboot\n", img_cnf);
+				} else {
+					printk("image confirmed - now permanent\n");
+				}
+
+			}
+			else{
+				printk("Image already confirmed\n");
+			}
+
+		}
+
+		else{
+        	printk("Running loop on an new image.\n");
+		}
+
+
+        k_msleep(1000);
     }
 
 	return 0;
