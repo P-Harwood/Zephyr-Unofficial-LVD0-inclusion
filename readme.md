@@ -23,6 +23,8 @@ west zephyr-export
 
 #### Build command - Run from project directory
 
+CMakeLists.txt builds images for both bank 0 and for bank 1. It makes the different address offset images for both the confirmed and unconfirmed image.
+
 ##### Single build command
 ```
 west build -b ek_ra6m5 -d build/v1 --sysbuild . -p always -- -DCONFIG_MCUBOOT_IMGTOOL_SIGN_VERSION=\"1.0.0\" 
